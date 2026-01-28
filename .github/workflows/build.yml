@@ -19,19 +19,18 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --no-save
 
       - name: Build Vite
-        run: npx vite build
+        run: ./node_modules/.bin/vite build
 
       - name: Build Electron
-        run: npx tsc -p tsconfig.electron.json
+        run: ./node_modules/.bin/tsc -p tsconfig.electron.json
 
       - name: Package macOS app
-        run: npx electron-builder --mac --publish never
+        run: ./node_modules/.bin/electron-builder --mac --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
