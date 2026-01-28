@@ -8,7 +8,7 @@
     "build": "npm run build:vite && npm run build:electron && electron-builder",
     "build:vite": "vite build",
     "build:electron": "tsc -p tsconfig.electron.json",
-    "build:mac": "npm run build && electron-builder --mac",
+    "build:mac": "npm run build && electron-builder --mac --publish never",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -58,6 +58,9 @@
           ]
         }
       ]
+    },
+    "publish": {
+      "provider": "github"
     }
   }
 }
