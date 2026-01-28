@@ -25,13 +25,13 @@ jobs:
         run: npm install
 
       - name: Build Vite
-        run: npm run build:vite
+        run: npx vite build
 
       - name: Build Electron
-        run: npm run build:electron
+        run: npx tsc -p tsconfig.electron.json
 
       - name: Package macOS app
-        run: npm run build:mac
+        run: npx electron-builder --mac --publish never
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
