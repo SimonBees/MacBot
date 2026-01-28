@@ -2,9 +2,9 @@
   "name": "macbot",
   "version": "1.0.0",
   "description": "macOS AI Assistant",
-  "main": "src/main/index.ts",
+  "main": "out-electron/main/index.js",
   "scripts": {
-    "dev": "vite",
+    "dev": "NODE_ENV=development vite",
     "build": "npm run build:vite && npm run build:electron && electron-builder",
     "build:vite": "vite build",
     "build:electron": "tsc -p tsconfig.electron.json",
@@ -34,21 +34,21 @@
     "appId": "com.macbot.ai",
     "productName": "MacBot",
     "directories": {
-      "output": "release"
+      "output": "release",
+      "buildResources": "resources"
     },
     "files": [
       "dist/**/*",
       "out-electron/**/*",
       "package.json"
     ],
-    "extraResources": [
-      {
-        "from": "node_modules/**/*",
-        "to": "node_modules/"
-      }
-    ],
+    "extraMetadata": {
+      "main": "out-electron/main/index.js"
+    },
     "mac": {
       "category": "public.app-category.productivity",
+      "hardenedRuntime": true,
+      "gatekeeperAssess": false,
       "target": [
         {
           "target": "dmg",
@@ -58,9 +58,6 @@
           ]
         }
       ]
-    },
-    "nsis": {
-      "oneClick": false
     }
   }
 }

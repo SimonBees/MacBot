@@ -3,7 +3,7 @@ import * as path from 'path'
 
 let mainWindow: BrowserWindow | null = null
 
-const isDev = process.env.NODE_ENV !== 'production'
+const isDev = process.env.NODE_ENV === 'development'
 
 function createWindow() {
   mainWindow = new BrowserWindow({
@@ -19,6 +19,8 @@ function createWindow() {
     },
   })
 
+  // Production: Load from built files
+  // Development: Load from Vite dev server
   if (isDev) {
     mainWindow.loadURL('http://localhost:5173')
     mainWindow.webContents.openDevTools()

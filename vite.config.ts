@@ -6,6 +6,7 @@ export default defineConfig({
   plugins: [
     react()
   ],
+  root: '.',
   base: './',
   resolve: {
     alias: {
@@ -16,6 +17,9 @@ export default defineConfig({
     outDir: 'dist',
     emptyOutDir: true,
     rollupOptions: {
+      input: {
+        main: path.resolve(__dirname, 'index.html')
+      },
       output: {
         manualChunks: undefined
       }
