@@ -1,54 +1,54 @@
-# MacBot - npm 安装问题解决
+# MacBot - npm Installation Fix
 
-## 解决方案
+## Solutions
 
-### 1. 切换到淘宝 npm 镜像
+### 1. Switch to Taobao npm Registry
 
 ```bash
-# 查看当前镜像
+# Check current registry
 npm config get registry
 
-# 切换到淘宝镜像
+# Switch to Taobao mirror
 npm config set registry https://registry.npmmirror.com
 
-# 清除缓存
+# Clear cache
 npm cache clean --force
 
-# 重新安装
+# Reinstall
 npm install
 ```
 
-### 2. 如果还失败，尝试使用代理
+### 2. If Still Failing, Try Using Proxy
 
 ```bash
-# 设置代理（如果有）
+# Set proxy (if available)
 npm config set proxy http://127.0.0.1:7890
 npm config set https-proxy http://127.0.0.1:7890
 
-# 安装后取消代理
+# Cancel proxy after installation
 npm config delete proxy
 npm config delete https-proxy
 ```
 
-### 3. 使用 yarn 替代 npm
+### 3. Use yarn Instead of npm
 
 ```bash
-# 安装 yarn
+# Install yarn
 npm install -g yarn
 
-# 使用淘宝镜像
+# Set Taobao mirror
 yarn config set registry https://registry.npmmirror.com
 
-# 安装依赖
+# Install dependencies
 yarn install
 
-# 启动开发
+# Start development
 yarn dev
 ```
 
-## 推荐方案
+## Recommended Solution
 
-使用 yarn + 淘宝镜像，通常更稳定：
+Use yarn + Taobao registry for better stability:
 
 ```bash
 npm install -g yarn
