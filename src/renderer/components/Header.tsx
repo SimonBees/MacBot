@@ -1,5 +1,5 @@
 import React from 'react'
-import { Minus2, X } from 'lucide-react'
+import { Minus, X } from 'lucide-react'
 
 const Header: React.FC = () => {
   const handleMinimize = () => {
@@ -21,7 +21,7 @@ const Header: React.FC = () => {
           onClick={handleMinimize}
           className="w-8 h-8 rounded-md hover:bg-gray-700 flex items-center justify-center text-gray-400 hover:text-white transition-colors"
         >
-          <Minus2 size={14} />
+          <Minus size={14} />
         </button>
         <button
           onClick={handleClose}
